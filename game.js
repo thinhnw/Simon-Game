@@ -10,15 +10,18 @@ function nextSequence() {
     gamePattern.push(randomChosenColour);
 
     $(`#${randomChosenColour}`).fadeOut(100).fadeIn(100);
-
-    let sound = new Audio(`sounds/${randomChosenColour}.mp3`);
-    sound.play();
+    playSound(randomChosenColour);
 }
 
 $(".btn").click(function(event) {
 
     let userChosenColour = this.id;
     userClickedPattern.push(userChosenColour);
-    console.log(userClickedPattern);
+    playSound(userChosenColour);
 });
 
+function playSound(name) {
+    
+    let sound = new Audio(`sounds/${name}.mp3`);
+    sound.play();
+}
